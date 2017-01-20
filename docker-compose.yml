@@ -1,0 +1,22 @@
+version: "2"
+
+services:
+  app:
+    build: .
+    volumes:
+      - ".:/usr/src/app"
+    working_dir: /usr/src/app
+    environment:
+      PORT: 3000
+      VCAP_SERVICES: '{"p-mysql": [{ "credentials": { "uri": "mysql://user:passwd@db/nodedb" }}]}'
+    command: npm start
+    ports:
+      - "3000:3000"
+
+  db:
+    image: mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=foo
+      - MYSQL_DATABASE=nodedb
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=passwd

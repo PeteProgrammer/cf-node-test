@@ -31,4 +31,8 @@ var config = {
   }
 };
 
+console.log("Services content: ", process.env.VCAP_SERVICES)
+svc = JSON.parse(process.env.VCAP_SERVICES)
+config[env].db = svc['p-mysql'][0].credentials.uri
+
 module.exports = config[env];

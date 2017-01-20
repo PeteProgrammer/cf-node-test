@@ -6,6 +6,7 @@ var express = require('express'),
 
 var app = express();
 
+console.log ("Configuration: ", config);
 module.exports = require('./config/express')(app, config);
 
 db.sequelize
