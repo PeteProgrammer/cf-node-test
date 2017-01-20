@@ -1,4 +1,5 @@
 var path = require('path'),
+    cfenv = require('cfenv'),
     rootPath = path.normalize(__dirname + '/..'),
     env = process.env.NODE_ENV || 'development';
 
@@ -33,6 +34,6 @@ var config = {
 
 console.log("Services content: ", process.env.VCAP_SERVICES)
 svc = JSON.parse(process.env.VCAP_SERVICES)
-config[env].db = svc['p-mysql'][0].credentials.uri
+config[env].db = cfenv.getAppEnv().getService('db-small').credentials.uri;
 
 module.exports = config[env];

@@ -8,7 +8,7 @@ services:
     working_dir: /usr/src/app
     environment:
       PORT: 3000
-      VCAP_SERVICES: '{"p-mysql": [{ "credentials": { "uri": "mysql://user:passwd@db/nodedb" }}]}'
+      VCAP_SERVICES: '{"p-mysql": [{ "name": "db-small", "credentials": { "uri": "mysql://user:passwd@db/nodedb" }}]}'
     command: npm start
     ports:
       - "3000:3000"
