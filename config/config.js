@@ -8,5 +8,5 @@ module.exports = {
       name: 'node-app'
     },
     port: process.env.PORT || 3000,
-    db: cfenv.getAppEnv().getService('db-small').credentials.uri;
+    db: cfenv.getAppEnv().getService('db-small').credentials.uri
 };
